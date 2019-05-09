@@ -1,0 +1,60 @@
+
+  <!--===========layout-footer================-->
+  <div class="layout-footer">
+    <div class="footer">
+      <div style="background-color:#383d61" class="footer--bg"></div>
+      <div class="footer--inner">
+        <div class="container">
+          <div class="footer_main">
+            <div class="am-g">
+              <div class="am-u-md-3 ">
+                <div class="footer_main--column">
+                  <strong class="footer_main--column_title">关于我们</strong>
+                  <div class="footer_about">
+                      <p class="footer_about--text">
+                       	致力于提供免费共享的官网系统，为企业搭建完善多适配的官网系统。
+                      </p>
+                    </div>
+                </div>
+              </div>
+
+              <div class="am-u-md-3 ">
+                <div class="footer_main--column">
+                  <strong class="footer_main--column_title">产品中心</strong>
+                  <ul class="footer_navigation">
+              {volist name="cp1" id="vo" key="k"}
+                    <li class="footer_navigation--item"><a href="#" class="footer_navigation--link">{$vo.title}</a></li>
+              {/volist}
+                  </ul>
+                </div>
+              </div>
+
+              <div class="am-u-md-3 ">
+                <div class="footer_main--column">
+                  <strong class="footer_main--column_title">产品新闻</strong>
+                  <ul class="footer_navigation">
+              {volist name="cp2" id="vo" key="k"}
+                    <li class="footer_navigation--item"><a href="#" class="footer_navigation--link">{$vo.title}</a></li>
+              {/volist}
+                  </ul>
+                </div>
+              </div>
+
+              <div class="am-u-md-3 ">
+                <div class="footer_main--column">
+                  <strong class="footer_main--column_title">联系详情</strong>
+                  <ul class="footer_contact_info">
+                    <li class="footer_contact_info--item"><i class="am-icon-phone"></i><span>服务专线：{$web.phone}</span></li>
+                    <li class="footer_contact_info--item"><i class="am-icon-envelope-o"></i><span>{$web.email}</span></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="{:config('__PUBLIC__')}assets/js/jquery-2.1.0.js" charset="utf-8"></script>
+  <script src="{:config('__PUBLIC__')}assets/js/amazeui.js" charset="utf-8"></script>
+  <script src="{:config('__PUBLIC__')}assets/js/common.js" charset="utf-8"></script>

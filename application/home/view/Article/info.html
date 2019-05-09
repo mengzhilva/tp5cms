@@ -1,0 +1,84 @@
+
+{include file="header" /}
+{include file="top" /}
+ 
+
+
+    <!--===========layout-container================-->
+    <div class="layout-container">
+      <div class="page-header">
+        <div class="am-container">
+          <h1 class="page-header-title">{$classname}</h1>
+        </div>
+      </div>
+
+      <div class="breadcrumb-box">
+        <div class="am-container">
+          <ol class="am-breadcrumb">
+            <li><a href="/">首页</a></li>
+            <li class="am-active"><a href="/article/class/{$info['class_id']}">{$classname}</a></li>
+            <li class="am-active">{$info['title']}</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+
+    <div class="section news-section">
+      <div class="container">
+        <!--news-section left start-->
+        <div class="am-u-md-9">
+          <div class="article">
+            <header class="article--header">
+              <h2 class="article--title">{$info['title']}</h2>
+              <ul class="article--meta">
+                <li class="article--meta_item"><i class="am-icon-calendar"></i>{$info['add_time']}</li>
+                <li class="article--meta_item"><i class="am-icon-user"></i>{$info['author']}</li>
+              </ul>
+            </header>
+            <div class="article--content">
+              {$info['content']}
+            </div>
+          </div>
+
+          
+        </div>
+        <!--news-section left end-->
+
+        <!--news-section right start-->
+        <div class="am-u-md-3">
+          <div class="blog_sidebar">
+            <div class="widget">
+              <h2 class="widget--title"><i class="am-icon-file-text-o"></i>最新资讯</h2>
+              <ul>
+              {volist name="news" id="vo" key="k"}
+					<li><a href="/article/{$vo.id}">{$vo.title}</a></li>
+              {/volist}
+				</ul>
+            </div>
+            <div class="widget">
+              <h2 class="widget--title"><i class="am-icon-comments-o"></i>热门动态</h2>
+              <ul>
+              {volist name="newshot" id="vo" key="k"}
+					<li><a href="/article/{$vo.id}">{$vo.title}</a></li>
+              {/volist}
+				</ul>
+            </div>
+            <div class="widget">
+              <h2 class="widget--title"><i class="am-icon-rss"></i>站内公告</h2>
+              <ul>
+								<li>{$web.gonggao}<span class="rss-date"></span></li>
+							</ul>
+            </div>
+          </div>
+        </div>
+        <!--news-section right end-->
+      </div>
+    </div>
+  </div>
+
+
+
+{include file="footer" /}
+</body>
+
+</html>

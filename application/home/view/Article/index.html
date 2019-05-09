@@ -1,0 +1,76 @@
+
+{include file="header" /}
+{include file="top" /}
+ 
+
+
+    <!--===========layout-container================-->
+    <div class="layout-container">
+      <div class="page-header">
+        <div class="am-container">
+          <h1 class="page-header-title">{$classname}</h1>
+        </div>
+      </div>
+
+      <div class="breadcrumb-box">
+        <div class="am-container">
+          <ol class="am-breadcrumb">
+            <li><a href="/">首页</a></li>
+            <li class="am-active">{$classname}</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="container">
+
+        <div class="news-contaier">
+          <div class="blog">
+            <div class="am-g">
+
+              {volist name="list" id="vo" key="k"}
+              <div class="am-u-lg-4 am-u-md-6  am-u-end">
+                <div class="article">
+                  <div class="article-img">
+                    <img src="{$vo.img}" alt="" />
+                  </div>
+                  <div class="article-header">
+                    <h2><a href="/article/{$vo.id}" rel="">{$vo.title}</a></h2>
+                    <ul class="article--meta">
+						<li class="article--meta_item -date">{$vo.add_time}</li>
+					</ul>
+                  </div>
+                  <div class="article--content">
+					 <p>{$vo.desc}</p>
+				  </div>
+                  <div class="article--footer">
+  									<a href="/article/{$vo.id}" class="link">Read More</a>
+  								</div>
+                </div>
+              </div>
+              {/volist}
+            </div>
+
+
+
+
+
+
+
+
+
+            <!-- pagination-->
+          
+			<?php echo $page;?>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+{include file="footer" /}
+
+</body>
+
+</html>

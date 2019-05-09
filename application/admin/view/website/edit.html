@@ -1,0 +1,182 @@
+
+        <div class="col-md-12">
+          <div class="box box-info">
+          <form class="form-horizontal" method="post">
+          <input type="hidden" name="id" value="<?php echo $data['module']['id']; ?>">
+          <input type="hidden" name="opt" value="save">
+              <div class="box-body">
+                <div class="form-group">
+                  <label for="inputEmail3" class="col-sm-2 control-label">标题</label>
+
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" name="data[title]" value="<?php echo $data['module']['title']; ?>" id="inputEmail3" placeholder="标题">
+                  </div>
+                </div>
+        <div style="clear:both;"></div>
+                <div class="form-group">
+                  <label for="inputPassword3" class="col-sm-2 control-label">keyword</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" name="data[keyword]" value="<?php echo $data['module']['keyword']; ?>" id="inputPassword3" placeholder="keyword">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="inputEmail3" class="col-sm-2 control-label">联系方式</label>
+
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" name="data[phone]" value="<?php echo $data['module']['phone']; ?>" id="inputEmail3" placeholder="联系方式">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="inputEmail3" class="col-sm-2 control-label">email</label>
+
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" name="data[email]" value="<?php echo $data['module']['email']; ?>" id="inputEmail3" placeholder="email">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="inputEmail3" class="col-sm-2 control-label">地址</label>
+
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" name="data[address]" value="<?php echo $data['module']['address']; ?>" id="inputEmail3" placeholder="地址">
+                  </div>
+                </div>
+        <div style="clear:both;"></div>
+          <div class="form-group duan"  id="imgdiv" style="">
+          <label for="title" class="col-sm-2 control-label">*logo</label>
+              <div  class="col-sm-10">
+
+				<div style="float: left;margin-left: 10px;" class="img">
+				<a href="javascript:upimage()" id="thumb-imageupimg" class="img-thumbnail">
+				<img id="image" class="upimage-image" style="height:150px;width:auto;" src="<?php if($data['module']['img']){echo $data['module']['img'];}else{echo'/static/admin/imgs/add1.png';}?>"/></a>
+				<input style="display:none;" id="caseimg"  value="<?=$data['module']['logo']?>"  name="data[logo]" class="form-control" />
+				</div>
+          </div>
+        </div>
+                <div class="form-group">
+                  <label for="inputPassword3" class="col-sm-2 control-label">描述</label>
+                  <div class="col-sm-10">
+                    <textarea id="" name="data[desc]" rows="10" cols="80"><?php echo $data['module']['desc']; ?></textarea>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="inputPassword3" class="col-sm-2 control-label">站内公告</label>
+                  <div class="col-sm-10">
+                    <textarea id="" name="data[gonggao]" rows="10" cols="80">
+                                            <?php echo $data['module']['gonggao']; ?>
+                    </textarea>
+                </div>
+                </div>
+              </div>
+              <!-- /.box-body -->
+              <div class="box-footer">
+                <button type="submit" class="btn btn-default">取消</button>
+                <button type="submit" class="btn btn-info pull-right">提交</button>
+              </div>
+              <!-- /.box-footer -->
+            </form>
+            </div>
+            </div>
+
+
+            <script>
+  $(function () {
+    // Replace the <textarea id="editor1"> with a CKEditor
+    // instance, using default configuration.
+    CKEDITOR.replace('editor1',{   
+	  filebrowserImageUploadUrl : '/admin/ajax/uploadimg/',  
+	  language : 'zh-cn',  
+      height: 500,
+      toolbar :
+      [
+         //加粗     斜体，     下划线      穿过线      下标字        上标字
+         ['Bold','Italic','Underline','Strike','Subscript','Superscript'],
+         // 数字列表          实体列表            减小缩进    增大缩进
+         ['NumberedList','BulletedList','-','Outdent','Indent'],
+         //左对 齐             居中对齐          右对齐          两端对齐
+         ['JustifyLeft','JustifyCenter','JustifyRight','JustifyBlock'],
+         //超链接  取消超链接 锚点
+         ['Link','Unlink','Anchor'],
+         //图片    flash    表格       水平线            表情       特殊字符        分页符
+         ['Image','Flash','Table','HorizontalRule','Smiley','SpecialChar','PageBreak'],
+         '/',
+         // 样式       格式      字体    字体大小
+         ['Styles','Format','Font','FontSize'],
+         //文本颜色     背景颜色
+         ['TextColor','BGColor'],
+         //全屏           显示区块
+         ['Maximize', 'ShowBlocks','-']
+      ]
+	  });CKEDITOR.replace('editor2',{   
+		  filebrowserImageUploadUrl : '/admin/ajax/uploadimg/',  
+		  language : 'zh-cn',  
+	      height: 500,
+	      toolbar :
+	      [
+	         //加粗     斜体，     下划线      穿过线      下标字        上标字
+	         ['Bold','Italic','Underline','Strike','Subscript','Superscript'],
+	         // 数字列表          实体列表            减小缩进    增大缩进
+	         ['NumberedList','BulletedList','-','Outdent','Indent'],
+	         //左对 齐             居中对齐          右对齐          两端对齐
+	         ['JustifyLeft','JustifyCenter','JustifyRight','JustifyBlock'],
+	         //超链接  取消超链接 锚点
+	         ['Link','Unlink','Anchor'],
+	         //图片    flash    表格       水平线            表情       特殊字符        分页符
+	         ['Image','Flash','Table','HorizontalRule','Smiley','SpecialChar','PageBreak'],
+	         '/',
+	         // 样式       格式      字体    字体大小
+	         ['Styles','Format','Font','FontSize'],
+	         //文本颜色     背景颜色
+	         ['TextColor','BGColor'],
+	         //全屏           显示区块
+	         ['Maximize', 'ShowBlocks','-']
+	      ]
+		  });
+  //bootstrap WYSIHTML5 - text editor
+  });
+  function upimage() {
+		$('#form-upload').remove();
+		
+		$('body').prepend('<form enctype="multipart/form-data" id="form-upload" style="display: none;"><input type="file" name="file" value="" /></form>');
+		
+		$('#form-upload input[name=\'file\']').trigger('click');
+		
+		if (typeof timer != 'undefined') {
+	    	clearInterval(timer);
+		}
+		
+		timer = setInterval(function() {
+			if ($('#form-upload input[name=\'file\']').val() != '') {
+				clearInterval(timer);
+				
+				$.ajax({
+					url: '/admin/ajax/upload',
+					type: 'post',		
+					dataType: 'json',
+					data: new FormData($('#form-upload')[0]),
+					cache: false,
+					contentType: false,
+					processData: false,		
+					beforeSend: function() {
+					},
+					complete: function() {
+					},
+					success: function(json) {
+
+						if (json['error']) {
+							alert(json['error']);
+						}
+						if (json['success']) {
+							
+							$('#image').attr('src',json['src']);
+							$('#caseimg').val(json['src']);
+							
+						}
+					},			
+					error: function(xhr, ajaxOptions, thrownError) {
+						alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+					}
+				});	
+			}
+		}, 500);
+	}
+</script>

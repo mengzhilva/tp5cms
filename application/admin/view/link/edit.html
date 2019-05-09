@@ -1,0 +1,112 @@
+
+        <div class="col-md-12">
+          <div class="box box-info">
+          <form class="form-horizontal" method="post">
+          <input type="hidden" name="id" value="<?php echo $data['module']['id']; ?>">
+          <input type="hidden" name="opt" value="save">
+              <div class="box-body">
+                <div class="form-group">
+                  <label for="inputEmail3" class="col-sm-2 control-label">名称</label>
+
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" name="data[name]" value="<?php echo $data['module']['name']; ?>" id="inputEmail3" placeholder="名称">
+                  </div>
+                </div>
+              
+                <div class="form-group">
+                  <label for="inputEmail3" class="col-sm-2 control-label">地址</label>
+
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" name="data[url]" value="<?php echo $data['module']['url']; ?>" id="inputEmail3" placeholder="地址">
+                  </div>
+                </div>
+        <div style="clear:both;"></div>
+          <div class="form-group duan"  id="imgdiv" style="">
+          <label for="title" class="col-sm-2 control-label">*封面图</label>
+              <div  class="col-sm-10">
+
+				<div style="float: left;margin-left: 10px;" class="img">
+				<a href="javascript:upimage()" id="thumb-imageupimg" class="img-thumbnail">
+				<img id="image" class="upimage-image" style="height:150px;width:auto;" src="<?php if($data['module']['img']){echo $data['module']['img'];}else{echo'/static/admin/imgs/add1.png';}?>"/></a>
+				<input style="display:none;" id="caseimg"  value="<?=$data['module']['img']?>"  name="data[img]" class="form-control" />
+				</div>
+          </div>
+        </div>
+                <div class="form-group">
+                  <label for="inputPassword3" class="col-sm-2 control-label">描述</label>
+                  <div class="col-sm-10">
+                    <textarea id="" name="data[desc]" rows="10" cols="80"><?php echo $data['module']['desc']; ?></textarea>
+                  </div>
+                </div>
+              </div>
+              <!-- /.box-body -->
+              <div class="box-footer">
+                <button type="submit" class="btn btn-default">取消</button>
+                <button type="submit" class="btn btn-info pull-right">提交</button>
+              </div>
+              <!-- /.box-footer -->
+            </form>
+            </div>
+            </div>
+
+<script>
+$(document).ready(function(){
+	$("#btnicon").click(function(){
+		$("#selicon").modal('show');
+	});	
+	$(".iconbtn").click(function(){
+		var elem = $(this).find('i');
+		$("#module_icon").val(elem.attr('class'));			
+		$("#icon_preview").html("<i class='"+elem.attr('class')+"'></i>")
+
+		$("#selicon").modal('hide');
+		
+	});
+});
+function upimage() {
+	$('#form-upload').remove();
+	
+	$('body').prepend('<form enctype="multipart/form-data" id="form-upload" style="display: none;"><input type="file" name="file" value="" /></form>');
+	
+	$('#form-upload input[name=\'file\']').trigger('click');
+	
+	if (typeof timer != 'undefined') {
+    	clearInterval(timer);
+	}
+	
+	timer = setInterval(function() {
+		if ($('#form-upload input[name=\'file\']').val() != '') {
+			clearInterval(timer);
+			
+			$.ajax({
+				url: '/admin/ajax/upload',
+				type: 'post',		
+				dataType: 'json',
+				data: new FormData($('#form-upload')[0]),
+				cache: false,
+				contentType: false,
+				processData: false,		
+				beforeSend: function() {
+				},
+				complete: function() {
+				},
+				success: function(json) {
+
+					if (json['error']) {
+						alert(json['error']);
+					}
+					if (json['success']) {
+						
+						$('#image').attr('src',json['src']);
+						$('#caseimg').val(json['src']);
+						
+					}
+				},			
+				error: function(xhr, ajaxOptions, thrownError) {
+					alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+				}
+			});	
+		}
+	}, 500);
+}
+</script>

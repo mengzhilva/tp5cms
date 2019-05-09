@@ -1,0 +1,121 @@
+
+{include file="header" /}
+{include file="top" /}
+ 
+
+    <!--mobile header start-->
+    
+
+
+
+
+    <!--===========layout-container================-->
+    <div class="layout-container">
+      <div class="index-page">
+        <div data-am-widget="tabs" class="am-tabs am-tabs-default">
+          <div class="am-tabs-bd">
+              {volist name="hdp" id="vo" key="k"}
+            <div data-tab-panel-<?php echo ($k-1); ?> class="am-tab-panel {if condition="$k eq 1"}am-active{/if}">
+              <div class="index-banner" style="background:url({$vo.img})">
+                <div class="index-mask">
+                  <div class="container">
+                  <a href="{$vo.url}"><img src="{$vo.img}" /></a>
+                    <div class="am-g">
+                      <div class="am-u-md-10 am-u-sm-centered">
+                        <h1 class="slide_simple--title">{$vo.name}</h1>
+                        <p class="slide_simple--text am-text-left">
+							{$vo.desc}				  
+						</p>
+                        <div class="slide_simple--buttons">
+  							<a href="{$vo.url}"><button type="button" class="am-btn am-btn-danger">了解更多</button></a>
+						</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {/volist}
+          </div>
+
+          <ul class="am-tabs-nav am-cf index-tab">
+              {volist name="hdp" id="vo" key="k"}
+            <li class="{if condition="$k eq 1"}am-active{/if}">
+              <a href="[data-tab-panel-<?php echo ($k-1); ?>] am-g">
+                <div class="am-u-md-3 am-u-sm-3 am-padding-right-0">
+                  <i class="am-icon-cog"></i>
+                </div>
+                <div class="school-item-right am-u-md-9 am-u-sm-9 am-text-left">
+                  <strong class="promo_slider_nav--item_title">{$vo.name}</strong>
+                  <p class="promo_slider_nav--item_description">{$vo.desc}</p>
+                </div>
+              </a>
+            </li>
+            {/volist}
+            
+          </ul>
+        </div>
+
+      </div>
+    </div>
+
+
+    <div class="section">
+      <div class="container">
+        <div class="section--header">
+					<h2 class="section--title">核心优势</h2>
+					<p class="section--description">
+						{$website.mybest}
+					</p>
+				</div>
+
+        <!--index-container start-->
+        <div class="index-container">
+          <div class="am-g">
+              {volist name="article" id="vo" key="k"}
+            <div class="am-u-md-3">
+              <div class="features_item">
+					<a href="/article/{$vo.id}"><img src="{$vo.img}" alt=""></a>
+					<a href="/article/{$vo.id}"><h3 class="features_item--title">{$vo.title}</h3></a>
+					<p class="features_item--text">
+						{$vo.desc}
+					</p>
+				</div>
+            </div>
+            {/volist}
+            
+          </div>
+
+          <div class="index-more">
+            <button type="button" class="am-btn am-btn-secondary">MORE&nbsp;&nbsp;>></button>
+          </div>
+        </div>
+        <!--index-container end-->
+      </div>
+    </div>
+
+  </div>
+
+
+
+  <!--customer-logo start-->
+    <div class="customer-logo">
+      <div class="container">
+        <div class="am-g">
+              {volist name="link" id="vo" key="k"}
+          <div class="am-u-md-2 am-u-sm-4 customer-box">
+            <a href="{$vo.url}" title="{$vo.name}">
+              <img class="normal-logo" src="{$vo.img}" alt="" />
+              <img class="am-active"  alt=""src="{$vo.img}" alt="" />
+            </a>
+          </div>
+            {/volist}
+        </div>
+      </div>
+    </div>
+  <!--customer-logo end-->
+
+{include file="footer" /}
+</body>
+
+</html>
